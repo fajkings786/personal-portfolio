@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useInView, useMotionValue, useSpring, useTransform, Variants } from 'framer-motion'; // Added Variants import
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -13,9 +13,7 @@ export default function AboutSection() {
   const textRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   
-  // ✅ FIXED: Framer Motion's useInView takes a ref as the first argument, 
-  // and returns a boolean. We also use `once` instead of `triggerOnce` 
-  // and `amount` instead of `threshold`.
+  // FIXED: Framer Motion's useInView takes a ref as the first argument
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, amount: 0.2 });
 
@@ -68,8 +66,8 @@ export default function AboutSection() {
     { label: 'Tech Stacks', value: 15 },
   ];
 
-  // Floating animation for stats (framer-motion)
-  const statsVariants = {
+  // FIXED: Added `Variants` type to fix the 'spring' string inference error
+  const statsVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: (i: number) => ({
       opacity: 1,
