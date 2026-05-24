@@ -1,5 +1,6 @@
-// app/data/skills.ts
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma, SiAdobephotoshop } from 'react-icons/si';
+// data/skills.ts
+
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiGit, SiDocker, SiFigma } from 'react-icons/si';
 
 export const skillsData = [
   {
