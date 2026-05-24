@@ -7,7 +7,7 @@ import { useInView } from 'react-intersection-observer';
 import { statsData } from '@/data/stats'; // adjust path if needed
 
 export default function StatsSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 }); // 👈 fixed
+const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
   const [counts, setCounts] = useState(statsData.map(() => 0));
 
   useEffect(() => {

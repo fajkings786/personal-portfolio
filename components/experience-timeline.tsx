@@ -11,8 +11,8 @@ import { experienceData } from '@/data/experience';
 export default function ExperienceTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineLineRef = useRef<HTMLDivElement>(null);
-  const { ref: headerRef, inView: headerInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
+const headerRef = useRef<HTMLDivElement>(null);
+const headerInView = useInView(headerRef, { once: true, amount: 0.1 });
   useEffect(() => {
     if (typeof window === 'undefined') return;
     gsap.registerPlugin(ScrollTrigger);
