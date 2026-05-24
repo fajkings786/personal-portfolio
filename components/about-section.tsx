@@ -1,7 +1,7 @@
 // components/about-section.tsx
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import gsap from 'gsap';
@@ -12,7 +12,12 @@ export default function AboutSection() {
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const { ref: headerRef, inView: headerInView } = useInView({ triggerOnce: true, threshold: 0.2 });
+  
+  // ✅ FIXED: Framer Motion's useInView takes a ref as the first argument, 
+  // and returns a boolean. We also use `once` instead of `triggerOnce` 
+  // and `amount` instead of `threshold`.
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerInView = useInView(headerRef, { once: true, amount: 0.2 });
 
   // Mouse tilt values (for image)
   const mouseX = useMotionValue(0);
